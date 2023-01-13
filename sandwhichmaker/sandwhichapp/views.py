@@ -10,12 +10,12 @@ ingredients={
 }
 
 # Create your views here.
-class SandwichappView(View):
+class SandwhichappView(View):
     def get(self, request):
         if request.method=='GET':
             return render(
                 request=request,
-                template_name='sandwich.html',
+                template_name='sandwhich.html',
                 context={'ingredients': ingredients.keys()}
             )
 
@@ -32,13 +32,13 @@ class IngredientsListView(View):
                             'ingredient_type': ingredient_type}
             )
 
-class SandwichGeneratorView(View):
+class SandwhichGeneratorView(View):
     def get(self, request):
         if request.method=='GET':
             selected_meat=random.choice(ingredients['meats'])
             selected_cheese=random.choice(ingredients['cheeses'])
             selected_toppings=random.choice(ingredients['toppings'])
 
-            sandwich=f'{selected_meat} & {selected_cheese} with {selected_toppings}'
-            return render(request, 'sandwich_generator.html', context={'sandwich': sandwich})
+            sandwhich=f'{selected_meat} & {selected_cheese} with {selected_toppings}'
+            return render(request, 'sandwhich_generator.html', context={'sandwhich': sandwhich})
             
